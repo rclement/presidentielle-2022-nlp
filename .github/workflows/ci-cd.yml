@@ -3,8 +3,8 @@ name: CI/CD
 on: [push]
 
 jobs:
-  build-slides:
-    name: Build Slides
+  slides:
+    name: Build and Deploy Slides
     runs-on: ubuntu-latest
 
     steps:
@@ -36,25 +36,6 @@ jobs:
             --TagRemovePreprocessor.enabled=True \
             --TagRemovePreprocessor.remove_input_tags remove_input \
             slides.ipynb
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-slides
-          path: public
-
-  deploy-slides:
-    name: Deploy Slides
-    runs-on: ubuntu-latest
-    needs: build-slides
-    if: contains(github.ref, 'master')
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-slides
-          path: public
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
