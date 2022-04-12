@@ -16,3 +16,9 @@ pipenv install
 pipenv shell
 python -m database
 ```
+
+## License
+
+Licensed under MIT License
+
+Copyright (c) 2022 - present Romain Clement
