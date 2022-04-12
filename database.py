@@ -76,6 +76,7 @@ def load_data() -> pd.DataFrame:
 
     return data
 
+
 def main() -> None:
     data = get_data()
     save_data(data)

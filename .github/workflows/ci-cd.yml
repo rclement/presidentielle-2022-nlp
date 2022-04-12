@@ -36,6 +36,9 @@ jobs:
             --TagRemovePreprocessor.enabled=True \
             --TagRemovePreprocessor.remove_input_tags remove_input \
             slides.ipynb
+      - name: Add static files
+        run: |
+          cp -R static public
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
